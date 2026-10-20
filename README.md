@@ -1,4 +1,4 @@
-# ShopSphere – Sports & Fitness E-Commerce Website
+# ShopSphere – Multi-Category E-Commerce Website
 
 ShopSphere is a Java-based e-commerce web application designed for browsing and purchasing sports and fitness products. The project demonstrates a traditional Java web development stack using JSP, Servlets, JDBC, and MySQL.
 
