@@ -121,7 +121,7 @@ The application may need tables for users, products, cart items, and orders, dep
 
 ## Author
 
-**Suresh Choudhary**
+**Suresh Kumar**
 
 ## License
 
