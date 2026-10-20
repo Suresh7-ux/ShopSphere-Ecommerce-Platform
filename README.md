@@ -69,7 +69,7 @@ Install or prepare the following:
 
    Open MySQL and create a database using the name configured in your project. If your project uses `PROJECT_JAVA`, run:
    ```sql
-   CREATE DATABASE PROJECT_JAVA;
+   CREATE DATABASE shopsphere;
    ```
    If your project uses a different database name, use that name instead.
 
