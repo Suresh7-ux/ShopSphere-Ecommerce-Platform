@@ -1,10 +1,14 @@
 package com.shopsphere.dao;
 
-import com.shopsphere.model.Product;
-import com.shopsphere.util.DB;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.shopsphere.model.Product;
+import com.shopsphere.util.DB;
 
 public class ProductDAO {
     private Product map(ResultSet r) throws SQLException {
@@ -26,12 +30,11 @@ public class ProductDAO {
     }
 
     public List<Product> all(String search, int categoryId,
-                             double minPrice, double maxPrice,
-                             String sort) throws SQLException {
+            double minPrice, double maxPrice,
+            String sort) throws SQLException {
         List<Product> products = new ArrayList<>();
         StringBuilder sql = new StringBuilder(
-            "SELECT * FROM products WHERE status = 1"
-        );
+                "SELECT * FROM products WHERE status = 1");
 
         boolean hasSearch = search != null && !search.trim().isEmpty();
         if (hasSearch) {
@@ -52,7 +55,7 @@ public class ProductDAO {
         }
 
         try (Connection con = DB.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql.toString())) {
+                PreparedStatement ps = con.prepareStatement(sql.toString())) {
             int i = 1;
             if (hasSearch) {
                 String keyword = "%" + search.trim() + "%";
@@ -76,8 +79,8 @@ public class ProductDAO {
 
     public Product find(int id) throws SQLException {
         try (Connection c = DB.getConnection();
-             PreparedStatement p = c.prepareStatement(
-                 "SELECT * FROM products WHERE product_id = ? AND status = 1")) {
+                PreparedStatement p = c.prepareStatement(
+                        "SELECT * FROM products WHERE product_id = ? AND status = 1")) {
             p.setInt(1, id);
             try (ResultSet r = p.executeQuery()) {
                 return r.next() ? map(r) : null;

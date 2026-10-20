@@ -1,16 +1,19 @@
 package com.shopsphere.controller;
 
+import java.io.IOException;
+
 import com.shopsphere.service.ProductService;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @WebServlet("/product")
 public class ProductDetailsServlet extends HttpServlet {
-    @Override protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
